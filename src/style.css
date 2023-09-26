@@ -6,9 +6,7 @@
     border-radius: 10px;
 
 }
-body{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
+
 h1{
     font-size: 35px;
     font-weight: 100px;
@@ -59,6 +57,10 @@ ul{
     font-size: 15px;
 }
 
+.container {
+    font-family: cursive;
+    background-color: beige;
+}
 
 
 

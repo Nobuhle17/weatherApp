@@ -17,7 +17,8 @@ let day= days[date.getDay()];
 return `${day} ${hours}:${minutes}`;
 }
  
-function displayForecast() {
+function displayForecast(response) {
+    console.log(response.data);
     let forecastElement=document.querySelector("#forecast");
     let forecastHTML= `<div class="row"`;
 let days=["Wed" ,"Thur" ,"Fri","Sat" ,"Sun"];
@@ -47,6 +48,7 @@ forecastHTML=forecastHTML + `</div>`;
 forecastElement.innerHTML=forecastHTML;
 }
 
+
 function displayTemperature(response) {
     
     let temperatureElement = document.querySelector(".temperature");
@@ -65,12 +67,12 @@ let iconElement=document.querySelector("#icon");
 iconElement.setAttribute("src",` https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 iconElement.setAttribute("alt",response.data.weather[0].description);
 
-
-
-
 celsiusTemperature =response.data.main.temp;
 temperatureElement.innerHTML=Math.round(celsiusTemperature)
+
+
 }
+
 function search(city){
     let apiKey ="22de9332fb541d849c849404a3205132";
     let City ="Nelspruit";
@@ -119,6 +121,6 @@ let celsiuslink=document.querySelector("#celsius-link");
 celsiuslink.addEventListener("click" , displayCelsiusTemperature);
 
  search("Nelspruit");
-displayForecast();
+
 
 
