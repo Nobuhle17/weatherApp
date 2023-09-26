@@ -16,7 +16,36 @@ let day= days[date.getDay()];
 
 return `${day} ${hours}:${minutes}`;
 }
+ 
+function displayForecast() {
+    let forecastElement=document.querySelector("#forecast");
+    let forecastHTML= `<div class="row"`;
+let days=["Wed" ,"Thur" ,"Fri","Sat" ,"Sun"];
+days.forEach(function(day){
+forecastHTML=forecastHTML +`<div class="col-4">
+        <div class="weather-forecast-date">
+        ${day}
+            <div class="weather-forecast-temperature">
+                <span class="forecast-temperature-max">
+                    18°
+                </span>
+                <span class="forecast-temperature-min">
+                    10°
+                </span>
+            </div>
+        </div>
+</div>`;
+})
 
+
+
+
+
+
+
+forecastHTML=forecastHTML + `</div>`;
+forecastElement.innerHTML=forecastHTML;
+}
 
 function displayTemperature(response) {
     
@@ -35,6 +64,8 @@ dateElement.innerHTML=formatDate(response.data.dt *1000);
 let iconElement=document.querySelector("#icon");
 iconElement.setAttribute("src",` https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 iconElement.setAttribute("alt",response.data.weather[0].description);
+
+
 
 
 celsiusTemperature =response.data.main.temp;
@@ -88,3 +119,6 @@ let celsiuslink=document.querySelector("#celsius-link");
 celsiuslink.addEventListener("click" , displayCelsiusTemperature);
 
  search("Nelspruit");
+displayForecast();
+
+
