@@ -39,20 +39,22 @@ iconElement.setAttribute("alt",response.data.weather[0].description);
 
 }
 
+function search(city){
+    let apiKey ="22de9332fb541d849c849404a3205132";
+    let City ="Nelspruit";
+let apiUrl=` https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-
-
-
-
-
-
-
-
-
-
-
-
-let apiKey ="22de9332fb541d849c849404a3205132";
-let apiUrl=` https://api.openweathermap.org/data/2.5/weather?q=Mbombela&appid=${apiKey}&units=metric`;
 console.log(apiUrl);
 axios.get(apiUrl).then(displayTemperature);
+
+}
+
+function handleSubmit(event) {
+event.preventDefault();
+let cityInputElement = document.querySelector("#city-input");
+search(cityInputElement.value);
+
+}
+search("Nelspruit");
+let form=document.querySelector("#search-form");
+form.addEventListener("submit",handleSubmit);
