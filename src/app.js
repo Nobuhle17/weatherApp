@@ -37,8 +37,9 @@ iconElement.setAttribute("src",` https://openweathermap.org/img/wn/${response.da
 iconElement.setAttribute("alt",response.data.weather[0].description);
 
 
+celsiusTemperature =response.data.main.temp;
+temperatureElement.innerHTML=Math.round(celsiusTemperature)
 }
-
 function search(city){
     let apiKey ="22de9332fb541d849c849404a3205132";
     let City ="Nelspruit";
@@ -53,8 +54,37 @@ function handleSubmit(event) {
 event.preventDefault();
 let cityInputElement = document.querySelector("#city-input");
 search(cityInputElement.value);
+}
+
+function showFahrenheitTemperature(event){
+event.preventDefault();
+let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32 ;
+
+let temperatureElement=document.querySelector(".temperature");
+temperatureElement.innerHTML=Math.round(fahrenheitTemperature);
 
 }
-search("Nelspruit");
+function displayCelsiusTemperature(event){
+event.preventDefault();
+let temperatureElement=document.querySelector(".temperature");
+temperatureElement.innerHTML=Math.round (celsiusTemperature);
+
+
+}
+
+
+let celsiusTemperature =null;
+
+
+
+
 let form=document.querySelector("#search-form");
 form.addEventListener("submit",handleSubmit);
+
+
+let fahrenheitlink=document.querySelector("#Fahrenheit-link");
+ fahrenheitlink.addEventListener("click" , showFahrenheitTemperature);
+let celsiuslink=document.querySelector("#celsius-link");
+celsiuslink.addEventListener("click" , displayCelsiusTemperature);
+
+ search("Nelspruit");

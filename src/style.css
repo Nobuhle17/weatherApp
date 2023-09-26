@@ -33,12 +33,13 @@ h1{
 .condition{ 
     text-align: center;
 }
+.gitDetails{
+    text-align: center;
+}
 li{
     list-style: none;
 }
-small{
-    text-align: center;
-}
+
 ul{
     padding-left: 1rem;
 }
